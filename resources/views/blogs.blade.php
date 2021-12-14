@@ -53,7 +53,7 @@
         @endforeach
     </div><!-- end page-wrapper -->
     @else
-    <p class="text-center fs-4">no post found</p>
+    <p class="text-center fs-4">no post found brooo</p>
 @endif
     <hr class="invis">
 
