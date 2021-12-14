@@ -26,7 +26,7 @@
                                     <div class="blog-list-widget">
                                         <div class="list-group">
                                             @foreach ($popular as $item)
-                                            <a href="detail{{ $item->slug }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <a href="detail/{{ $item->slug }}" class="list-group-item list-group-item-action flex-column align-items-start">
                                                 <div class="w-100 justify-content-between">
                                                     <img src="https://source.unsplash.com/600x500/" alt="" class="img-fluid float-left">
                                                     <h5 class="mb-1">{{ $item->judul }}</h5>
