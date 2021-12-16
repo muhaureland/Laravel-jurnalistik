@@ -26,7 +26,7 @@
                                     <div class="blog-list-widget">
                                         <div class="list-group">
                                             @foreach ($popular as $item)
-                                            <a href="detail/{{ $item->slug }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <a href="{{ url('detail', $item->slug) }}" class="list-group-item list-group-item-action flex-column align-items-start">
                                                 <div class="w-100 justify-content-between">
                                                     <img src="https://source.unsplash.com/600x500/" alt="" class="img-fluid float-left">
                                                     <h5 class="mb-1">{{ $item->judul }}</h5>
@@ -42,19 +42,17 @@
                                     <h2 class="widget-title">Recent Reviews</h2>
                                     <div class="blog-list-widget">
                                         <div class="list-group">
+                                            @foreach ($recent as $item)
                                             <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                                 <div class="w-100 justify-content-between">
-                                                    <img src="upload/tech_blog_02.jpg" alt="" class="img-fluid float-left">
-                                                    <h5 class="mb-1">Banana-chip chocolate cake recipe..</h5>
+                                                    <img src="https://source.unsplash.com/600x500/" alt="" class="img-fluid float-left">
+                                                    <h5 class="mb-1">{{ $item->judul }}</h5>
                                                     <span class="rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>
                                                     </span>
                                                 </div>
                                             </a>
+                                            @endforeach
                                         </div>
                                     </div><!-- end blog-list -->
                                 </div><!-- end widget -->
@@ -96,7 +94,7 @@
                                 <div class="widget">
                                     <div class="banner-spot clearfix">
                                         <div class="banner-img">
-                                            <img src="upload/banner_03.jpg" alt="" class="img-fluid">
+                                            <img src="{{ asset('assets_frontend/upload/banner_03.jpg') }}" alt="" class="img-fluid">
                                         </div><!-- end banner-img -->
                                     </div><!-- end banner -->
                                 </div><!-- end widget -->

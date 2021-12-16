@@ -26,13 +26,13 @@
                         </div><!-- end meta --> --}}
                         <h1 class="mb-4">Kategori media</h1>
                             <div class="row">
-                                @foreach ($categories as $category)
+                                @foreach ($categories as $item)
                                 <div class="col-md-6 mt-2 post-media">
-                                    <a href="/categories/{{ $category->slug }}">
+                                    <a href="/?category={{ $item->slug }}">
                                         <div class="card bg-dark text-white">
-                                            <img src="https://source.unsplash.com/500x500/?{{ $category->name }}" class="card-img" alt="{{ $category->name }}">
+                                            <img src="https://source.unsplash.com/500x500/?{{ $item->name }}" class="card-img" alt="{{ $item->name }}">
                                             <div class="card-img-overlay d-flex align-items-center">
-                                                <h5 class="card-title text-center">{{ $category->name }}</h5>
+                                                <h5 class="card-title text-center">{{ $item->name }}</h5>
                                             </div>
                                         </div>
                                     </a>

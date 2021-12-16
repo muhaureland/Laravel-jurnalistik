@@ -17,10 +17,9 @@ use App\Models\User;
 |
 */
 
-Route::get('/', [BlogController::class, 'index']);
-
-Route::get('/detail/{post:slug}', [BlogController::class, 'show']);
-Route::get('/categories', [BlogController::class, 'kategori']);
+Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+Route::get('detail/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('categories', [BlogController::class, 'kategori'])->name('blog.kategori');
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blogs', [

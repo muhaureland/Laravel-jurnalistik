@@ -56,7 +56,7 @@
                 @include('template_frontend.widgetfooter')
             </div>
         </div>
-    @include('template_frontend.footer')
+    {{-- @include('template_frontend.footer') --}}
     <div class="dmtop">Scroll to Top</div>
 </div><!-- end wrapper -->
 

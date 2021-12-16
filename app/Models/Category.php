@@ -9,9 +9,8 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    // protected $with = ['iniposts'];
 
-    public function iniposts()
+    public function categoryKePost()
     {
         return $this->hasMany(Post::class);
     }

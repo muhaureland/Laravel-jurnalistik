@@ -42,7 +42,7 @@
             <div class="tag-cloud-single">
                 <span>Tags</span>
                 @foreach ($categories as $item)
-                <small><a href="/?category={{ $item->slug }}" title="">{{ $item->name }} <span>{{ $item->iniposts->count() }}</span></a></small>
+                <small><a href="/?category={{ $item->slug }}" title="">{{ $item->name }} <span>{{ $item->categoryKePost->count() }}</span></a></small>
                 @endforeach
             </div><!-- end meta -->
 
@@ -64,7 +64,7 @@
                 </div><!-- end col -->
 
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                    <h4><a href="/authors/{{ $post->iniauthor->username }}">{{ $post->iniAuthor->name }}</a></h4>
+                    <h4><a href="/authors/{{ $post->postKeUser->username }}">{{ $post->postKeUser->name }}</a></h4>
                     <p>Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet, consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget, finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Tech Blog!</p>
 
                     <div class="topsocial">
@@ -154,9 +154,8 @@
                     <form class="form-wrapper">
                         <input type="text" class="form-control" placeholder="Your name">
                         <input type="text" class="form-control" placeholder="Email address">
-                        <input type="text" class="form-control" placeholder="Website">
                         <textarea class="form-control" placeholder="Your comment"></textarea>
-                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                        <button type="submit" class="btn btn-primary">Kirim Komentar</button>
                     </form>
                 </div>
             </div>
