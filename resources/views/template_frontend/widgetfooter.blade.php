@@ -42,7 +42,7 @@
                                     <h2 class="widget-title">Recent Reviews</h2>
                                     <div class="blog-list-widget">
                                         <div class="list-group">
-                                            @foreach ($recent as $item)
+                                            {{-- @foreach ($recent as $item)
                                             <a href="tech-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                                 <div class="w-100 justify-content-between">
                                                     <img src="https://source.unsplash.com/600x500/" alt="" class="img-fluid float-left">
@@ -52,7 +52,7 @@
                                                     </span>
                                                 </div>
                                             </a>
-                                            @endforeach
+                                            @endforeach --}}
                                         </div>
                                     </div><!-- end blog-list -->
                                 </div><!-- end widget -->

@@ -162,13 +162,7 @@
                 </ul>
                 <ul class="navbar-nav mr-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-android"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-apple"></i></a>
+                        <a class="nav-link" href="#"><i class="fa fa-rss"> Login</i></a>
                     </li>
                 </ul>
             </div>

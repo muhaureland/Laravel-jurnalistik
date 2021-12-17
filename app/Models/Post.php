@@ -40,6 +40,7 @@ class Post extends Model
     //     //belongsTo satu category pasti dimiliki 1 postingan
     //     return $this->belongsTo(Category::class, 'category_id');
     // }
+    
     protected  $guarded = ['id'];
     protected $with = ['category', 'postKeUser'];
     //setiap pemanggilan model post maka category dan authornya langsung terpanggil
@@ -51,7 +52,7 @@ class Post extends Model
             => $query->where('judul', 'like', '%' . $search . '%')
                     ->orWhere('body', 'like', '%' . $search . '%')
         );
-
+        
         //query mengatur postingan sesuai yg dipilih
         $query->when($filters['category'] ?? false, fn($query, $category)
             => $query->whereHas('category', fn($query)
@@ -68,7 +69,7 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);

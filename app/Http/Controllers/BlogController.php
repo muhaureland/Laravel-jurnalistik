@@ -27,10 +27,9 @@ class BlogController extends Controller
             "title"         => "Berita Terbaru" . $title,
             "categories"    => Category::all(),
             "posts"         => Post::latest()->filter(request(['search', 'category']))->paginate(7),
-            "popular"       => Post::orderBy('views','desc')->get()->take(5),
-            "recent"        => Post::orderBy('id','desc')->get()->take(3),
+            "popular"       => Post::orderBy('views','desc')->take(5)->get()
+            
         ]);
-        
     }
 
     public function show(Post $post)
@@ -40,8 +39,7 @@ class BlogController extends Controller
             "post" => $post,
             $post->increment('views'),
             "posts"     => Post::latest()->get(),
-            "popular"       => Post::orderBy('views','desc')->get()->take(5),
-            "recent"        => Post::orderBy('id','desc')->get()->take(3),
+            "popular"       => Post::orderBy('views','desc')->take(5)->get()
         ]);
     }
 
@@ -50,8 +48,7 @@ class BlogController extends Controller
         return view('categories', [
             "categories" => Category::latest()->paginate(6),
             "posts"     => Post::latest()->get(),
-            "popular"       => Post::orderBy('views','desc')->get()->take(5),
-            "recent"        => Post::orderBy('id','desc')->get()->take(3),
+            "popular"       => Post::orderBy('views','desc')->take(5)->get()
         ]);
     }
 }
