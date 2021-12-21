@@ -14,69 +14,91 @@
 
 <div class="section-body">
     <div class="row">
-    <div class="col-12">
-        <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
-            @csrf
+        <div class="col-12">
             <div class="card">
-            <div class="card-header">
-                <h4>Write Your Post</h4>
-            </div>
-                <div class="card-body">
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
-                        <div class="col-sm-12 col-md-7">
-                            <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" id="judul" value="{{ old('judul') }}">
+                <div class="card-header">
+                    <h4>Write Your Post</h4>
+                </div>
+                <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="judul">Judul</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" id="judul" value="{{ old('judul') }}">
+                                <input type="hidden" name="views">
+                                @error('judul')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
-                        @error('judul')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
-                        <div class="col-sm-12 col-md-7">
-                            <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
-                                <option disabled selected>=== Pilih Kategori ===</option>
-                                @foreach($categories as $item)
-                                <option value="{{ $item->id }}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
-                                @endforeach
-                            </select>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="category_id">Kategori</label>
+                            <div class="col-sm-12 col-md-7">
+                                <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                                    <option disabled selected>=== Pilih Kategori ===</option>
+                                    @foreach($categories as $item)
+                                    <option value="{{ $item->id }}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
-                        <div class="col-sm-12 col-md-7">
-                            <textarea class="summernote-simple"></textarea>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
+                            <div class="col-sm-12 col-md-7">
+                                <div id="image-preview" class="image-preview">
+                                    <label for="gambar" id="image-label">Choose File</label>
+                                    <img class="img-preview img-fluid">
+                                    <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="previewImage()">
+                                    @error('gambar')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
-                        <div class="col-sm-12 col-md-7">
-                            <div id="image-preview" class="image-preview">
-                            <label for="image-upload" id="image-label">Choose File</label>
-                            <input type="file" name="image" id="image-upload" />
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="body">body</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="hidden" class="form-control @error('body') is-invalid @enderror" name="body" id="body" value="{{ old('body') }}">
+                                <trix-editor input="body"></trix-editor>
+                                @error('body')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7">
+                                <button type="submit" class="btn btn-primary">Create Post</button>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
-                        <div class="col-sm-12 col-md-7">
-                            <select class="form-control selectric">
-                            <option>Publish</option>
-                            <option>Draft</option>
-                            <option>Pending</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                        <div class="col-sm-12 col-md-7">
-                            <button type="submit" class="btn btn-primary">Create Post</button>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
-        </form>
-    </div>
+        </div>
     </div>
 </div>
+<script>
+    // matikan file input di trix editor
+    document.addEventListener('trix-file-accept', function(e){
+        e.prevenDefault();
+    })
+
+    // function preview gambar
+    function previewImage() 
+    {
+        const image = document.querySelector('#gambar')
+        const imgPreview = document.querySelector('.img-preview');
+        imgPreview.style.display = 'block';
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+        oFReader.onload = function(oFREvent)
+            {
+                imgPreview.src = oFREvent.target.result;
+            }
+    }
+</script>
 @endsection

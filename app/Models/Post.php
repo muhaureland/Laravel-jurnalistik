@@ -8,7 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // protected $guarded = ['id'];
     // protected $with = ['postKeCategory', 'postKeUser'];
@@ -41,7 +41,19 @@ class Post extends Model
     //     return $this->belongsTo(Category::class, 'category_id');
     // }
     
-    protected  $guarded = ['id'];
+    // $guarded selain id harus diisi
+    // protected  $guarded = ['id'];
+    // $fillable hanya field yg didaftarkan yg boleh diisi
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'judul',
+        'slug',
+        'gambar',
+        'excerpt',
+        'body',
+        'views'
+    ];
     protected $with = ['category', 'postKeUser'];
     //setiap pemanggilan model post maka category dan authornya langsung terpanggil
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         return view('admin.index');
     })->name('dashboard');
     Route::resource('dashboard/posts', DashboardPostController::class);
+    Route::resource('dashboard/categories', DashboardCategoryController::class);
 });
 
 

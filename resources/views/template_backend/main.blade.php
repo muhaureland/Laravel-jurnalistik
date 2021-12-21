@@ -9,19 +9,27 @@
 <link rel="stylesheet" href="{{ asset('assets_backend/modules/bootstrap/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets_backend/modules/fontawesome/css/all.min.css') }}">
 
-<!-- CSS Libraries -->
+<!-- trix Libraries -->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets_backend/trix/trix.css') }}">
+<script type="text/javascript" src="{{ asset('assets_backend/trix/trix.js') }}"></script>
+{{-- matikan toolbar upload fileny trix ditor --}}
+<style>
+    trix-toolbar [data-trix-button-group="file-tools"]{
+        display: none;
+    }
+</style>
 
 <!-- Template CSS -->
 <link rel="stylesheet" href="{{ asset('assets_backend/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets_backend/css/components.css') }}">
+
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'UA-94034622-3');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-94034622-3');
 </script>
 <!-- /END GA --></head>
 
@@ -40,6 +48,8 @@ gtag('config', 'UA-94034622-3');
             @include('template_backend.footer')
         </div>
     </div>
+    @include('sweetalert::alert')
+
 
 <!-- General JS Scripts -->
 <script src="{{ asset('assets_backend/modules/jquery.min.js') }}"></script>
@@ -49,6 +59,14 @@ gtag('config', 'UA-94034622-3');
 <script src="{{ asset('assets_backend/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
 <script src="{{ asset('assets_backend/modules/moment.min.js') }}"></script>
 <script src="{{ asset('assets_backend/js/stisla.js') }}"></script>
+
+{{-- <script src="{{ asset('assets_backend/myjs/alert.js') }}"></script> --}}
+<!-- JS Libraies -->
+{{-- <script src="{{ asset('assets_backend/modules/sweetalert/sweetalert.min.js') }}"></script> --}}
+
+<!-- Page Specific JS File -->
+{{-- <script src="{{ asset('assets_backend/js/page/modules-sweetalert.js') }}"></script> --}}
+
 
 <!-- Template JS File -->
 <script src="{{ asset('assets_backend/js/scripts.js') }}"></script>

@@ -43,6 +43,8 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
+
         $validatedData = $request->validate([
             'judul'         => 'required|max:15',
             'category_id'   => 'required',
@@ -50,7 +52,12 @@ class DashboardPostController extends Controller
             'body'          => 'required'
         ]);
 
+        if($request->file('gambar')){
+            $validatedData['gambar'] = $request->file('gambar')->store('post-gambar');
+        }
+
         $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['views'] = 0;
         $validatedData['slug'] = SlugService::createSlug(Post::class, 'slug', $request->judul);
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Post::create($validatedData);
