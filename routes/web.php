@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\User;
+use App\Http\Controllers\DashboardPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +21,46 @@ Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 Route::get('detail/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('categories', [BlogController::class, 'kategori'])->name('blog.kategori');
 
-Route::get('login', [LoginController::class, 'index'])->name('login.index');
+
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('login', [LoginController::class, 'authenticate'])->name('login.authenticate');
-Route::get('register', [RegisterController::class, 'index'])->name('register.index');
+Route::post('logout', [LoginController::class, 'logout'])->name('login.logout');
+
+
+Route::get('register', [RegisterController::class, 'index'])->name('register.index')->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 
-// Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    });
-    // Route::resource('/dashboard/posts', DashboardPostController::class);
-// });
+
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('dashboard', function(){
+        return view('admin.index');
+    })->name('dashboard');
+    Route::resource('dashboard/posts', DashboardPostController::class);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blogs', [

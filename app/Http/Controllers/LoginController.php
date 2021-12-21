@@ -20,11 +20,20 @@ class LoginController extends Controller
             'password'  => 'required|'
         ]);
 
+        //attempt untuk cek apakah yg login memnenuhi $credentials
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
-
+        
         return back()->with('gagal', 'Login gagal');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/');
     }
 }

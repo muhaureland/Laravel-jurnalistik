@@ -6,14 +6,14 @@
 <title>jurnalistik &mdash; @yield('title')</title>
 
 <!-- General CSS Files -->
-<link rel="stylesheet" href="assets_backend/modules/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets_backend/modules/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="{{ asset('assets_backend/modules/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets_backend/modules/fontawesome/css/all.min.css') }}">
 
 <!-- CSS Libraries -->
 
 <!-- Template CSS -->
-<link rel="stylesheet" href="assets_backend/css/style.css">
-<link rel="stylesheet" href="assets_backend/css/components.css">
+<link rel="stylesheet" href="{{ asset('assets_backend/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets_backend/css/components.css') }}">
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
@@ -34,12 +34,7 @@ gtag('config', 'UA-94034622-3');
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
-                <div class="section-header">
-                    <h1>@yield('sub-judul')</h1>
-                </div>
-                <div class="section-body">
                     @yield('container')
-                </div>
                 </section>
             </div>
             @include('template_backend.footer')
@@ -47,16 +42,16 @@ gtag('config', 'UA-94034622-3');
     </div>
 
 <!-- General JS Scripts -->
-<script src="assets_backend/modules/jquery.min.js"></script>
-<script src="assets_backend/modules/popper.js"></script>
-<script src="assets_backend/modules/tooltip.js"></script>
-<script src="assets_backend/modules/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets_backend/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="assets_backend/modules/moment.min.js"></script>
-<script src="assets_backend/js/stisla.js"></script>
+<script src="{{ asset('assets_backend/modules/jquery.min.js') }}"></script>
+<script src="{{ asset('assets_backend/modules/popper.js') }}"></script>
+<script src="{{ asset('assets_backend/modules/tooltip.js') }}"></script>
+<script src="{{ asset('assets_backend/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets_backend/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+<script src="{{ asset('assets_backend/modules/moment.min.js') }}"></script>
+<script src="{{ asset('assets_backend/js/stisla.js') }}"></script>
 
 <!-- Template JS File -->
-<script src="assets_backend/js/scripts.js"></script>
-<script src="assets_backend/js/custom.js"></script>
+<script src="{{ asset('assets_backend/js/scripts.js') }}"></script>
+<script src="{{ asset('assets_backend/js/custom.js') }}"></script>
 </body>
 </html>
