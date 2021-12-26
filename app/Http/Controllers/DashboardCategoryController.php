@@ -15,7 +15,7 @@ class DashboardCategoryController extends Controller
     public function index()
     {
         return view('admin.category.index', [
-            'categories' => Category::all()
+            'categories' => Category::latest()->paginate(10)
         ]);
     }
 
@@ -41,7 +41,7 @@ class DashboardCategoryController extends Controller
         $validatedData['slug'] = SlugService::createSlug(Category::class, 'slug', $request->name);
 
         Category::create($validatedData);
-        return redirect('dashboard/categories')->with('success', 'data berhasil disimpan');
+        return redirect('dashboard/categories');
     }
 
     /**
@@ -50,7 +50,7 @@ class DashboardCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
     }
@@ -61,7 +61,7 @@ class DashboardCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -73,7 +73,7 @@ class DashboardCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -84,8 +84,9 @@ class DashboardCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+        return redirect('dashboard/categories');
     }
 }

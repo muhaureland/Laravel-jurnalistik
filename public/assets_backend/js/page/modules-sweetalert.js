@@ -20,7 +20,9 @@ $("#swal-5").click(function() {
 	swal('Good Job', 'You clicked the button!', 'error');
 });
 
-$("#swal-6").click(function() {
+$("#swal-6").click(function(e) {
+  e.preventDefault();
+  const href = $(this).attr('href');
   swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -28,15 +30,26 @@ $("#swal-6").click(function() {
       buttons: true,
       dangerMode: true,
     })
-    .then((willDelete) => {
-      if (willDelete) {
-      swal('Poof! Your imaginary file has been deleted!', {
-        icon: 'success',
-      });
-      } else {
-      swal('Your imaginary file is safe!');
-      }
+    .then((result) => {
+      if (result.value) {
+      document.location.href = href;
+      } 
     });
+});
+
+$('.delete-confirm').on('click', function (event) {
+  event.preventDefault();
+  const url = $(this).attr('href');
+  swal({
+      title: 'Are you sure?',
+      text: 'This record and it`s details will be permanantly deleted!',
+      icon: 'warning',
+      buttons: ["Cancel", "Yes!"],
+  }).then(function(value) {
+      if (value) {
+          window.location.href = url;
+      }
+  });
 });
 
 $("#swal-7").click(function() {

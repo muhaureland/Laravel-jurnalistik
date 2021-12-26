@@ -16,27 +16,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::create([
+            'name'      => 'awen',
+            'username'  => 'awenese',
+            'email'     => 'awen@gmail.com',
+            'password'  => bcrypt('awenese')
+        ]);
         User::factory(10)->create();
-        Post::factory(13)->create();
-        Category::create([
-            'name'  => 'web programming',
-            'slug'  => 'web-programming'
-        ]);
-        Category::create([
-            'name'  => 'personal',
-            'slug'  => 'personal'
-        ]);
-        Category::create([
-            'name'  => 'design kreative',
-            'slug'  => 'design-kreative'
-        ]);
-        Category::create([
-            'name'  => 'mobile programming',
-            'slug'  => 'mobile-programming'
-        ]);
-        Category::create([
-            'name'  => 'mobile legend',
-            'slug'  => 'mobile-legend'
-        ]);
+        Post::factory(15)->create();
+        Category::factory(25)->create();
+        // Category::create([
+        //     'name'  => 'web programming',
+        //     'slug'  => 'web-programming'
+        // ]);
+        // Category::create([
+        //     'name'  => 'personal',
+        //     'slug'  => 'personal'
+        // ]);
+        // Category::create([
+        //     'name'  => 'design kreative',
+        //     'slug'  => 'design-kreative'
+        // ]);
+        // Category::create([
+        //     'name'  => 'mobile programming',
+        //     'slug'  => 'mobile-programming'
+        // ]);
+        // Category::create([
+        //     'name'  => 'mobile legend',
+        //     'slug'  => 'mobile-legend'
+        // ]);
     }
 }

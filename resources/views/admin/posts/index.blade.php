@@ -88,7 +88,12 @@
                         <div class="bullet"></div>
                         <a href="#">Edit</a>
                         <div class="bullet"></div>
-                        <a href="#" class="text-danger">Trash</a>
+                        <form class="d-inline" action="{{ route('posts.destroy', $item->id) }}" method="post" onsubmit="return submitForm(this);">
+                            @method('delete')
+                            @csrf
+                            {{-- <a href="#" class="text-danger">Trash</a> --}}
+                            <button class="text-danger" type="submit">Trash</button>
+                        </form>
                         </div>
                     </td>
                     <td>
@@ -103,27 +108,11 @@
             <div class="float-right">
             <nav>
                 <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                    </a>
-                </li>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-start">
+                            <li class="page-item">{{ $posts->links() }}</li>
+                        </ul>
+                    </nav>
                 </ul>
             </nav>
             </div>

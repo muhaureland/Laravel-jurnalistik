@@ -42,6 +42,7 @@
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
+                    
                     @yield('container')
                 </section>
             </div>
@@ -60,13 +61,10 @@
 <script src="{{ asset('assets_backend/modules/moment.min.js') }}"></script>
 <script src="{{ asset('assets_backend/js/stisla.js') }}"></script>
 
-{{-- <script src="{{ asset('assets_backend/myjs/alert.js') }}"></script> --}}
-<!-- JS Libraies -->
-{{-- <script src="{{ asset('assets_backend/modules/sweetalert/sweetalert.min.js') }}"></script> --}}
 
-<!-- Page Specific JS File -->
-{{-- <script src="{{ asset('assets_backend/js/page/modules-sweetalert.js') }}"></script> --}}
-
+<!-- MY JS File -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('assets_backend/js/myjs.js') }}"></script>
 
 <!-- Template JS File -->
 <script src="{{ asset('assets_backend/js/scripts.js') }}"></script>
