@@ -1,4 +1,4 @@
-@extends('template_backend.main')
+@extends('template_backend.main', ['title' => 'Post-Create'])
 @section('container')
 <div class="section-header">
     <div class="section-header-back">
@@ -26,7 +26,6 @@
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="judul">Judul</label>
                             <div class="col-sm-12 col-md-7">
                                 <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" id="judul" value="{{ old('judul') }}">
-                                <input type="hidden" name="views">
                                 @error('judul')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

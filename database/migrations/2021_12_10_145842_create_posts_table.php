@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('gambar')->nullable();
             $table->text('excerpt');
             $table->text('body');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

@@ -26,7 +26,9 @@ class DashboardCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.category.create',[
+            'category' => new Category
+        ]);
     }
 
     /**
@@ -63,7 +65,10 @@ class DashboardCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',[
+            'category'  => $category
+            // 'categories'    => Category::all()
+        ]);
     }
 
     /**
@@ -75,7 +80,15 @@ class DashboardCategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+            'name'         => 'required|max:15'
+        ]);
+
+        // $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['slug'] = SlugService::createSlug(Category::class, 'slug', $request->name);
+    
+        Category::where('id', $category->id)->update($validatedData);
+        return redirect('dashboard/categories')->with('success', 'postingan data berhasil dirubah!');
     }
 
     /**

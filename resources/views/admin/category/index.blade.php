@@ -1,10 +1,9 @@
-@extends('template_backend.main')
-@section('title', 'dashboard')
+@extends('template_backend.main', ['title' => 'Categories'])
 @section('container')
 <div class="section-header">
     <h1>Kategori</h1>
     <div class="section-header-button">
-    <a href="{{ route('categories.create') }}" class="btn btn-primary">Add New</a>
+        <a href="{{ route('categories.create') }}" class="btn btn-primary">Add New</a>
     </div>
     {{-- @if (session('status'))
         <div class="alert alert-success mb-1">
@@ -89,10 +88,8 @@
                     <td>{{ $item->name }}
                         <div class="table-links">
                         <a href="#">View</a>
-                        <div class="bullet"></div>
-                        <a href="#">Edit</a>
-                        <div class="bullet"></div>
-                            <form class="d-inline" action="{{ route('categories.destroy', $item->id) }}" method="post" onsubmit="return submitForm(this);">
+                        <button class="d-inline text-info"><a href="{{ route('categories.edit', $item->slug) }}">Edit</a></button>
+                            <form class="d-inline" action="{{ route('categories.destroy', $item->slug) }}" method="post" onsubmit="return submitForm(this);">
                                 @method('delete')
                                 @csrf
                                 <button class="text-danger" type="submit">Trash</button>

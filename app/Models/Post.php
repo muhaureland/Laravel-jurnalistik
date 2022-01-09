@@ -51,8 +51,7 @@ class Post extends Model
         'slug',
         'gambar',
         'excerpt',
-        'body',
-        'views'
+        'body'
     ];
     protected $with = ['category', 'postKeUser'];
     //setiap pemanggilan model post maka category dan authornya langsung terpanggil
@@ -85,6 +84,12 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+        // getRouteKeyName untuk mengakali resource agar bisa menggunakan slug...bukan menggunakan id
     }
 
     public function sluggable(): array

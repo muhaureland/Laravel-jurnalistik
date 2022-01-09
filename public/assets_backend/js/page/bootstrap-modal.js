@@ -43,7 +43,7 @@ $("#modal-4").fireModal({
 });
 
 $("#modal-5").fireModal({
-  title: 'Login',
+  title: 'Loginss',
   body: $("#modal-login-part"),
   footerClass: 'bg-whitesmoke',
   autoFocus: false,
@@ -55,7 +55,7 @@ $("#modal-5").fireModal({
     // DO AJAX HERE
     let fake_ajax = setTimeout(function() {
       form.stopProgress();
-      modal.find('.modal-body').prepend('<div class="alert alert-info">Please check your browser console</div>')
+      modal.find('.modal-body').prepend('<div class="alert alert-info">bangsat Please check your browser console</div>')
 
       clearInterval(fake_ajax);
     }, 1500);
@@ -67,7 +67,7 @@ $("#modal-5").fireModal({
   },
   buttons: [
     {
-      text: 'Login',
+      text: 'Ganti',
       submit: true,
       class: 'btn btn-primary btn-shadow',
       handler: function(modal) {

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -18,7 +20,7 @@ class DashboardPostController extends Controller
     public function index()
     {
         return view('admin.posts.index',[
-            'posts' => Post::where('user_id', auth()->user()->id)->latest()->paginate(2)
+            'posts' => Post::where('user_id', auth()->user()->id)->paginate(5)
             // 'posts' => Post::all()
         ]);
     }
@@ -41,27 +43,19 @@ class DashboardPostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         // return $request;
 
-        $validatedData = $request->validate([
-            'judul'         => 'required|max:15',
-            'category_id'   => 'required',
-            'gambar'        => 'image|file|max:1024',
-            'body'          => 'required'
-        ]);
-
+        $validatedData = $request->all();
         if($request->file('gambar')){
             $validatedData['gambar'] = $request->file('gambar')->store('post-gambar');
         }
-
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['views'] = 0;
         $validatedData['slug'] = SlugService::createSlug(Post::class, 'slug', $request->judul);
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         Post::create($validatedData);
-        return redirect('dashboard/posts')->with('status', 'postingan berhasil disimpan');
+        return redirect('dashboard/posts')->with('success', 'postingan berhasil disimpan');
     }
 
     /**
@@ -83,7 +77,10 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit',[
+            'post'  => $post,
+            'categories'    => Category::all()
+        ]);
     }
 
     /**
@@ -95,7 +92,30 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validatedData = $request->validate([
+            'judul'         => 'required|max:15',
+            'category_id'   => 'required',
+            'gambar'        => 'image|file|max:1024',
+            'body'          => 'required'
+            
+        ]);
+        // $validatedData = $request->all();
+
+        if($request->file('gambar'))
+        {
+            if($request->oldGambar)
+            {
+                Storage::delete($request->oldGambar);
+            }
+            $validatedData['gambar'] = $request->file('gambar')->store('post-gambar');
+        }
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['slug'] = SlugService::createSlug(Post::class, 'slug', $request->judul);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+    
+        Post::where('id', $post->id)->update($validatedData);
+        return redirect('dashboard/posts')->with('success', 'postingan data berhasil dirubah!');
     }
 
     /**

@@ -44,27 +44,27 @@
 
       // Modal base template
       var modal_template = '   <div class="modal'+ (options.animation == true ? ' fade' : '') +'" tabindex="-1" role="dialog" id="'+ id +'">  '  + 
-                 '     <div class="modal-dialog '+options.size+(options.center ? ' modal-dialog-centered' : '')+'" role="document">  '  + 
-                 '       <div class="modal-content">  '  + 
-                 ((options.header == true) ?
-                 '         <div class="modal-header">  '  + 
-                 '           <h5 class="modal-title">'+ options.title +'</h5>  '  + 
-                 ((options.closeButton == true) ?
-                 '           <button type="button" class="close" data-dismiss="modal" aria-label="Close">  '  + 
-                 '             <span aria-hidden="true">&times;</span>  '  + 
-                 '           </button>  '
-                 : '') + 
-                 '         </div>  '
-                 : '') +
-                 '         <div class="modal-body">  '  + 
-                 '         </div>  '  +
-                 (options.buttons.length > 0 ?
-                 '         <div class="modal-footer">  '  + 
-                 '         </div>  '  
-                 : '')+ 
-                 '       </div>  '  + 
-                 '     </div>  '  + 
-                 '  </div>  ' ; 
+                '     <div class="modal-dialog '+options.size+(options.center ? ' modal-dialog-centered' : '')+'" role="document">  '  + 
+                '       <div class="modal-content">  '  + 
+                ((options.header == true) ?
+                '         <div class="modal-header">  '  + 
+                '           <h5 class="modal-title">'+ options.title +'</h5>  '  + 
+                ((options.closeButton == true) ?
+                '           <button type="button" class="close" data-dismiss="modal" aria-label="Close">  '  + 
+                '             <span aria-hidden="true">&times;</span>  '  + 
+                '           </button>  '
+                : '') + 
+                '         </div>  '
+                : '') +
+                '         <div class="modal-body">  '  + 
+                '         </div>  '  +
+                (options.buttons.length > 0 ?
+                '         <div class="modal-footer">  '  + 
+                '         </div>  '  
+                : '')+ 
+                '       </div>  '  + 
+                '     </div>  '  + 
+                '  </div>  ' ; 
 
       // Convert modal to object
       var modal_template = $(modal_template);

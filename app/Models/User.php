@@ -47,4 +47,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    //function untuk membuat otomatis di register
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

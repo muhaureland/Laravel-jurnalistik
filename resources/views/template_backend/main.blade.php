@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-<title>jurnalistik &mdash; @yield('title')</title>
+<title>{{ $title }} &mdash; Jurnalistik</title>
+{{-- <title>jurnalistik &mdash; @yield('title')</title> --}}
 
 <!-- General CSS Files -->
 <link rel="stylesheet" href="{{ asset('assets_backend/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -52,22 +53,25 @@
     @include('sweetalert::alert')
 
 
-<!-- General JS Scripts -->
-<script src="{{ asset('assets_backend/modules/jquery.min.js') }}"></script>
-<script src="{{ asset('assets_backend/modules/popper.js') }}"></script>
-<script src="{{ asset('assets_backend/modules/tooltip.js') }}"></script>
-<script src="{{ asset('assets_backend/modules/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets_backend/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
-<script src="{{ asset('assets_backend/modules/moment.min.js') }}"></script>
-<script src="{{ asset('assets_backend/js/stisla.js') }}"></script>
+    <!-- General JS Scripts -->
+    <script src="{{ asset('assets_backend/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets_backend/modules/popper.js') }}"></script>
+    <script src="{{ asset('assets_backend/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('assets_backend/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets_backend/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('assets_backend/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('assets_backend/js/stisla.js') }}"></script>
 
 
-<!-- MY JS File -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ asset('assets_backend/js/myjs.js') }}"></script>
+    <!-- MY JS File -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets_backend/js/wen.js') }}"></script>
 
-<!-- Template JS File -->
-<script src="{{ asset('assets_backend/js/scripts.js') }}"></script>
-<script src="{{ asset('assets_backend/js/custom.js') }}"></script>
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('assets_backend/js/page/bootstrap-modal.js') }}"></script>
+
+    <!-- Template JS File -->
+    <script src="{{ asset('assets_backend/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets_backend/js/custom.js') }}"></script>
 </body>
 </html>

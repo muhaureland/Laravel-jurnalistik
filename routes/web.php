@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardCategoryController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,36 +35,17 @@ Route::post('register', [RegisterController::class, 'store'])->name('register.st
 
 
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('dashboard', function(){
-        return view('admin.index');
-    })->name('dashboard');
+    // Route::get('dashboard', function(){
+    //     return view('admin.index');
+    // })->name('dashboard');
+
+    Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('dashboard/{user:username}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('dashboard/profil/{user:username}', [UserController::class, 'update'])->name('user.update');
+
     Route::resource('dashboard/posts', DashboardPostController::class);
     Route::resource('dashboard/categories', DashboardCategoryController::class);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blogs', [
@@ -84,7 +67,3 @@ Route::middleware(['web', 'auth'])->group(function () {
 //             //maksudnya ketika model sudah dipanggil maka ambil sisanya menggunakan load ketika menggunakan relationship table
 //         ]);
 //     });
-
-
-
-
