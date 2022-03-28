@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -25,8 +25,12 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
         }
+
+        throw ValidationException::withMessages([
+            'email' => 'Login gagal'
+        ]);
         
-        return back()->with('gagal', 'Login gagal');
+        // return back()->with('gagal', 'Login gagal');
     }
 
     public function logout()

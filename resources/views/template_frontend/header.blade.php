@@ -22,13 +22,13 @@
                                 <div class="container">
                                     
                                     <div class="mega-menu-content clearfix">
-                                        <div class="tab">
+                                        {{-- <div class="tab">
                                             <button class="tablinks active" onclick="openCategory(event, 'cat01')">{{ $categories[0]->name }}</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat02')">{{ $categories[1]->name }}</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat03')">{{ $categories[2]->name }}</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat04')">{{ $categories[3]->name }}</button>
                                             <button class="tablinks" onclick="openCategory(event, 'cat05')">{{ $categories[4]->name }}</button>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="tab-details clearfix">
                                             <div id="cat01" class="tabcontent active">

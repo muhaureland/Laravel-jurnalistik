@@ -3,7 +3,7 @@
 <div class="section-header">
     <h1>Kategori</h1>
     <div class="section-header-button">
-        <a href="{{ route('categories.create') }}" class="btn btn-primary">Add New</a>
+        <a href="{{ route('categories.create') }}" class="btn btn-primary">Add categori</a>
     </div>
     {{-- @if (session('status'))
         <div class="alert alert-success mb-1">

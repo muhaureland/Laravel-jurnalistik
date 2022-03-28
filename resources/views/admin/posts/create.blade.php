@@ -17,25 +17,31 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Write Your Post</h4>
+                    <h4>Form tambah permintaan pendistribusian bahan bangunan</h4>
                 </div>
                 <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="judul">Judul</label>
-                            <div class="col-sm-12 col-md-7">
-                                <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" id="judul" value="{{ old('judul') }}">
-                                @error('judul')
+         
+                        {{-- <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="category_id">Pemasok</label>
+                            <div class="col-sm-12 col-md-6">
+                                <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                                    <option disabled selected>=== Pilih Pemasok ===</option>
+                                    @foreach($categories as $item)
+                                    <option value="{{ $item->id }}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="category_id">Kategori</label>
-                            <div class="col-sm-12 col-md-7">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="category_id">Material</label>
+                            <div class="col-sm-12 col-md-6">
                                 <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
-                                    <option disabled selected>=== Pilih Kategori ===</option>
+                                    <option disabled selected>=== Pilih Material ===</option>
                                     @foreach($categories as $item)
                                     <option value="{{ $item->id }}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
@@ -46,7 +52,47 @@
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="category_id">Jenis</label>
+                            <div class="col-sm-12 col-md-6">
+                                <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                                    <option disabled selected>=== Pilih Jenis ===</option>
+                                    @foreach($categories as $item)
+                                    <option value="{{ $item->id }}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="category_id">Merk</label>
+                            <div class="col-sm-12 col-md-6">
+                                <select class="form-control selectric @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
+                                    <option disabled selected>=== Pilih Merk ===</option>
+                                    @foreach($categories as $item)
+                                    <option value="{{ $item->id }}" {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jumlah</label>
+                                <div class="form-group col-md-3">
+                                <input type="number" class="form-control" id="inputCity">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <select id="inputState" class="form-control">
+                                    <option selected>Satuan</option>
+                                    <option>...</option>
+                                </select>
+                                </div>
+                          </div>
+                          {{-- <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
                             <div class="col-sm-12 col-md-7">
                                 <div id="image-preview" class="image-preview">
                                     <label for="gambar" id="image-label">Choose File</label>
@@ -57,21 +103,21 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="body">body</label>
-                            <div class="col-sm-12 col-md-7">
+                        </div> --}}
+                        {{-- <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3" for="body">Keterangan</label>
+                            <div class="col-sm-12 col-md-6">
                                 <input type="hidden" class="form-control @error('body') is-invalid @enderror" name="body" id="body" value="{{ old('body') }}">
                                 <trix-editor input="body"></trix-editor>
                                 @error('body')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                             <div class="col-sm-12 col-md-7">
-                                <button type="submit" class="btn btn-primary">Create Post</button>
+                                <button type="submit" class="btn btn-primary">Create</button>
                             </div>
                         </div>
                     </div>
@@ -101,3 +147,4 @@
     }
 </script>
 @endsection
+

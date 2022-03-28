@@ -43,7 +43,7 @@ class DashboardCategoryController extends Controller
         $validatedData['slug'] = SlugService::createSlug(Category::class, 'slug', $request->name);
 
         Category::create($validatedData);
-        return redirect('dashboard/categories');
+        return redirect('dashboard/categories')->with('success', 'postingan data berhasil dirubah!');
     }
 
     /**

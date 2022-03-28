@@ -126,6 +126,10 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->gambar)
+        {
+            Storage::delete($post->gambar);
+        }
         Post::destroy($post->id);
         return redirect('dashboard/posts');
     }

@@ -50,7 +50,9 @@
             @include('template_backend.footer')
         </div>
     </div>
-    @include('sweetalert::alert')
+
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
 
 
     <!-- General JS Scripts -->
@@ -62,9 +64,8 @@
     <script src="{{ asset('assets_backend/modules/moment.min.js') }}"></script>
     <script src="{{ asset('assets_backend/js/stisla.js') }}"></script>
 
-
     <!-- MY JS File -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{{ asset('assets_backend/js/wen.js') }}"></script>
 
     <!-- Page Specific JS File -->
